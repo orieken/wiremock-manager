@@ -1,0 +1,26 @@
+{
+  "name": "wiremock-server",
+  "version": "0.0.1",
+  "description": "pulls down and starts wiremock server for you",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orieken/wiremock-server.git"
+  },
+  "keywords": [
+    "wiremock"
+  ],
+  "author": "Oscar Rieken",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/orieken/wiremock-server/issues"
+  },
+  "homepage": "https://github.com/orieken/wiremock-server#readme"
+  "engines" : {
+    "node" : ">=6.0" 
+  }, 
+  "engineStrict" : true 
+}
