@@ -5,7 +5,7 @@ let sinon = require('sinon');
 let shell = require('shelljs');
 let configuration: Configuration;
 
-describe.only('Configuration', () => {
+describe('Configuration', () => {
   beforeEach(() => {
 
     configuration = new Configuration(shell);
