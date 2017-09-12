@@ -1,4 +1,5 @@
 # wiremock-manager
+[![npm version](https://badge.fury.io/js/wiremock-manager.svg)](https://badge.fury.io/js/wiremock-manager)
 
 
 ## Trying it out locally
