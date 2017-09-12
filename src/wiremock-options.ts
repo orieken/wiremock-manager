@@ -1,6 +1,6 @@
 export class WiremockOptions {
   public port: number = 8080;
-  public 'root-dir': string = './responses';
+  public 'root-dir': string = './';
 
   constructor(fields?: {
     port?: number;
