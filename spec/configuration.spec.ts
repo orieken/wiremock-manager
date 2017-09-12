@@ -3,12 +3,12 @@ import Configuration = require('../src/configuration');
 let expect = require('chai').expect;
 let sinon = require('sinon');
 let shell = require('shelljs');
+let yargs = { port: 8090, rootDir: './samples/' };
 let configuration: Configuration;
 
 describe('Configuration', () => {
   beforeEach(() => {
-
-    configuration = new Configuration(shell);
+    configuration = new Configuration(shell, yargs);
   });
 
   describe('isJavaInstalled()', () => {
@@ -19,7 +19,7 @@ describe('Configuration', () => {
     it('throws message if java is not installed', () => {
       let stubbedWhich = sinon.stub().returns(false);
       let stubbedShell = {which: stubbedWhich};
-      let config = new Configuration(stubbedShell);
+      let config = new Configuration(stubbedShell, yargs);
       expect(() => {
         config.isJavaInstalled()
       }).to.throw('Sorry, this script requires java');
@@ -33,7 +33,7 @@ describe('Configuration', () => {
     it('returns java version', () => {
       let stubbedWhich = sinon.stub().returns({stderr: versionString});
       let stubbedShell = {exec: stubbedWhich};
-      let config = new Configuration(stubbedShell);
+      let config = new Configuration(stubbedShell, yargs);
       expect(config.getJavaVersion()).to.include('1.6.0_65')
     });
   });
