@@ -3,12 +3,27 @@ import Configuration = require('../src/configuration');
 let expect = require('chai').expect;
 let sinon = require('sinon');
 let shell = require('shelljs');
-let yargs = { port: 8090, rootDir: './samples/' };
+let yargs = { port: 8090, 'root-dir': './samples/' };
 let configuration: Configuration;
 
 describe('Configuration', () => {
   beforeEach(() => {
     configuration = new Configuration(shell, yargs);
+  });
+
+  describe.only('constructor', () => {
+    it('creates options object with defaults', () => {
+      let stubbedShell = {};
+      let config = new Configuration(stubbedShell,stubbedShell);
+      expect(config.options).to.eql([ '--port 8080', '--root-dir ./responses' ])
+    });
+
+    it('creates options object with passed params', () => {
+      let stubbedShell = {};
+      let stubbedYargs = { port: 1, 'root-dir': 'path' };
+      let config = new Configuration(stubbedShell,stubbedYargs);
+      expect(config.options).to.eql([ '--port 1', '--root-dir path' ])
+    });
   });
 
   describe('isJavaInstalled()', () => {

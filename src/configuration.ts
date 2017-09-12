@@ -1,9 +1,34 @@
+import { WiremockOptions } from './wiremock-options';
+
 class Configuration {
   shell: any;
   requiredJavaVersion: string = '1.8';
+  wiremockVersion: string = '2.7.1';
+  wiremockOptions: WiremockOptions;
+  options: string[];
+  wiremockKeyOptions =[
+    'port',
+    'root-dir'
+  ];
 
-  constructor(shell) {
-    this.shell = shell
+  constructor(shell, yargs) {
+    this.shell = shell;
+    this.wiremockOptions = this.createWiremockOptions(yargs);
+    this.options = Object.keys(this.wiremockOptions).map((key) => `--${key} ${this.wiremockOptions[key]}`)
+  }
+
+  createWiremockOptions(yargs) {
+    if (this.arrayContainsArray(Object.keys(yargs), this.wiremockKeyOptions)) {
+      return new WiremockOptions(yargs);
+    }
+    return new WiremockOptions();
+  }
+
+
+  arrayContainsArray(superset, subset) {
+    return superset.some((value) => {
+      return (subset.indexOf(value) >= 0);
+    });
   }
 
   isJavaInstalled() {
