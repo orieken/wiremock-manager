@@ -4,7 +4,10 @@
   "description": "pulls down and starts wiremock server for you",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --opts mocha.opts"
+    "test": "mocha --opts mocha.opts",
+    "prepublishOnly": "tsc -p ./ --outDir dist/",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts"
   },
   "repository": {
     "type": "git",
@@ -36,6 +39,8 @@
   "dependencies": {
     "adm-zip": "^0.4.7",
     "chalk": "^2.0.1",
+    "request": "^2.83.0",
+    "request-progress": "^3.0.0",
     "shelljs": "^0.7.8",
     "ts-node": "^3.3.0",
     "typescript": "^2.4.2",
