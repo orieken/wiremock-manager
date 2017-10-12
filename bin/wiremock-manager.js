@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 require('ts-node/register');
 
-const Configuration = require('../src/configuration');
+const Configuration = require('../dist/src/configuration');
 const chalk = require('chalk');
 const log = console.log;
 let shell = require('shelljs');
@@ -22,7 +22,5 @@ if (config.isJavaInstalled()) {
 if (config.requiredJavaVersion >= installedJavaVersion) {
   log(chalk.red(`WireMock requires java version ${config.requiredJavaVersion} or higher`))
 }
-log(options);
-log(config.options);
 
 shell.exec(`java -jar wiremock-standalone-${config.wiremockVersion}.jar ${config.options.join(' ')}`);
