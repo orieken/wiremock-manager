@@ -11,11 +11,11 @@ describe('Configuration', () => {
     configuration = new Configuration(shell, yargs);
   });
 
-  describe.only('constructor', () => {
+  describe('constructor', () => {
     it('creates options object with defaults', () => {
       let stubbedShell = {};
       let config = new Configuration(stubbedShell,stubbedShell);
-      expect(config.options).to.eql([ '--port 8080', '--root-dir ./responses' ])
+      expect(config.options).to.eql([ '--port 8080', '--root-dir ./wiremock' ])
     });
 
     it('creates options object with passed params', () => {

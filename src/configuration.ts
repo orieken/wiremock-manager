@@ -3,7 +3,7 @@ import { WiremockOptions } from './wiremock-options';
 class Configuration {
   shell: any;
   requiredJavaVersion: string = '1.8';
-  wiremockVersion: string = '2.7.1';
+  wiremockVersion: string = '2.8.0';
   wiremockOptions: WiremockOptions;
   options: string[];
   wiremockKeyOptions =[
